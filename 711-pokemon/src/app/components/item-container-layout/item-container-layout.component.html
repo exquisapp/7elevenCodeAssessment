@@ -1,0 +1,7 @@
+<div [class]="styleClass" [style]="style">
+	<div *ngIf="title && itemCount > 0" class="py-3">
+		<p class="text-center mb-2 uppercase">{{ title }}<span>: ({{ itemCount }})</span>
+		</p>
+	</div>
+	<ng-content></ng-content>
+</div>

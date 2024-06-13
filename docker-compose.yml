@@ -1,0 +1,18 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: ./711-pokemon-api
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+
+  frontend:
+    build:
+      context: ./711-pokemon
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    depends_on:
+      - backend
+

@@ -1,0 +1,12 @@
+<div class="w-full fixed bottom-0 bg-blue-500 border-t border-slate-300">
+	<div class="flex justify-center items-center py-2 px-0">
+		<div class="flex items-center gap-4 max-w-2xl xs:mx-4 w-full">
+			<div class="flex items-center border border-white bg-white w-full px-2 rounded-lg">
+				<div class="pl-2 pr-4 text-xl"> Search </div>
+				<input [disabled]="isDisabled" (keyup)="onSearch($event)" type="text"
+					class="placeholder-inherit w-full px-4 focus:outline-none border-l border-slate-300 py-3" autocomplete="off"
+					placeholder="Search for pokemon...">
+			</div>
+		</div>
+	</div>
+</div>

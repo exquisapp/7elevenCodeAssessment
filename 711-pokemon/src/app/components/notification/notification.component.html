@@ -1,0 +1,15 @@
+<div *ngIf="notifications.length > 0" class="fixed max-w-md xs:px-3 md:right-4 xs:w-full z-[9999] top-20">
+	<app-card-layout *ngFor="let notification of notifications"
+		className="mb-2 shadow-lg px-4 w-full animate__animated animate__faster animate__jackInTheBox">
+		<div
+			[ngClass]="{ 'text-red-500': notification.type === 'error', 'text-emerald-500': notification.type === 'success', 'text-blue-500': notification.type === 'info' }"
+			class="flex gap-4 items-center">
+			<div class="border-r border-slate-300 grow p-4">
+				<p class="xs:text-xs">{{ notification.message }}</p>
+			</div>
+			<p (click)="onRemoveNotification(notification.id)" class="p-2 text-sm shrink-0 cursor-pointer">
+				X
+			</p>
+		</div>
+	</app-card-layout>
+</div>

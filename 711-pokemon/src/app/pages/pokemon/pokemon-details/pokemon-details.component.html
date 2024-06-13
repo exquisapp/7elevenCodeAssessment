@@ -1,0 +1,36 @@
+<app-page-container-layout>
+	<app-item-container-layout className="sm:h-full" [maxWidth]="1200">
+		<app-card-layout className=" duration-500 py-4 ">
+			<a routerLink="/pokemons" class="ml-4 hover:underline hover:text-blue-500">Back</a>
+			<div class="flex justify-center">
+				<img class="border p-3 border rounded-lg border-slate-300 mb-4" [src]="pokemon()?.image" [alt]="pokemon?.name">
+			</div>
+			<p class="text-lg text-center text-blue-500 mb-3">{{ pokemon()?.name | titlecase }}</p>
+			<div class="flex justify-between border-y px-4 py-3">
+				<p>Weight</p>
+				<p class="text-blue-500">{{ pokemon()?.weight }}</p>
+			</div>
+			<div class="border-b px-4 py-3">
+				<p class="mb-2">Generations</p>
+				<ul class="list-disc px-4">
+					@for (generation of pokemon()?.generation; track generation) {
+					<li class="text-sm">{{ generation }}</li>
+					}
+				</ul>
+			</div>
+			<div class="px-4 py-3">
+				<p class="mb-2">Moves</p>
+				<div class="grid grid-cols-12 gap-4 md:mt-2 w-full">
+					@for (move of pokemon()?.moves; track $index) {
+					<div class="xs:col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 l:col-span-3">
+						<app-card-layout className="duration-500 px-3 py-2">
+							{{ move.name | titlecase }}
+						</app-card-layout>
+					</div>
+					}
+				</div>
+			</div>
+
+		</app-card-layout>
+	</app-item-container-layout>
+</app-page-container-layout>

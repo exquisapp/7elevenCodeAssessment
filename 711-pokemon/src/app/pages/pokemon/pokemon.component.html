@@ -1,0 +1,22 @@
+<app-page-container-layout>
+	<app-item-container-layout className="sm:h-full" [maxWidth]="1200"  [itemCount]="pokemonCount">
+		<div class="grid grid-cols-12 gap-5 md:mt-2 w-full mb-4">
+			@for (pokemon of pokemons(); track pokemon.id) {
+				<div class="xs:col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 l:col-span-3">
+					<a [routerLink]="[pokemon.id]">
+						<app-card-layout
+							className="flex gap-4 item-center hover:border-blue-500 duration-500 py-3 px-2 text-center cursor-pointer">
+							<img class="border h-6 rounded-lg" [src]="pokemon?.image" [alt]="pokemon?.name">
+							<p class="mt-1">{{ pokemon.name | titlecase }}</p>
+						</app-card-layout>
+					</a>
+				</div>
+			}
+		</div>
+		@if(pokemons().length >= limit){
+			<app-card-layout (click)="onPaginate()" className="hover:border-blue-500 hover:text-blue-500 cursor-pointer uppercase rounded-lg ripple-effect text-center py-3 w-full">
+				Load more</app-card-layout>
+		}
+	</app-item-container-layout>
+	<app-search-filter (searchFilter)='onFilterData($event)'></app-search-filter>
+</app-page-container-layout>
